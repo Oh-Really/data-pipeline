@@ -1,16 +1,10 @@
 from datetime import datetime, timedelta
 import pendulum
-import os
 from airflow.decorators import dag
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.postgres_operator import PostgresOperator
-from final_project_operators.stage_redshift import StageToRedshiftOperator
-from final_project_operators.load_fact import LoadFactOperator
-from final_project_operators.load_dimension import LoadDimensionOperator
-from final_project_operators.data_quality import DataQualityOperator
-from udacity.common.final_project_sql_statements import SqlQueries
-from udacity.common import create
-from udacity.common import drop_and_create_tables
+from airflow.operators import (StageToRedshiftOperator, LoadFactOperator, LoadDimensionOperator, DataQualityOperator)
+from helpers import SqlQueries
 
 
 default_args = {
